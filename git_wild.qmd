@@ -25,10 +25,13 @@ execute:
 ### size greater than 1 carat or cut is "Ideal"
 
 library(ggplot2)
+library(tidyverse)
 data = ggplot2::diamonds
 
 premium = data |>
-  filter(cut=="Premium")
+  mutate(cut=as.character(cut)) |>
+  filter(cut == "Premium") |>
+  mutate(cut=as.factor(cut))
 ```
 
 ## STEP 7: Uh oh, merge conflicts!
