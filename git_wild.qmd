@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ---
 title: "Wild Git Collaboration Practice"
 format: 
@@ -17,7 +16,11 @@ execute:
 ### ggplot2 package) and create a plot of price vs. carat (or some other
 ### variables of your choice)
 
+diamonds_plot <- ggplot(diamonds, aes(x = price, y = depth))+
+  geom_line()+
+  facet_wrap(~clarity)
 
+diamonds_plot
 ```
 
 ```{r partner 2}
@@ -38,60 +41,20 @@ premium = data |>
 ## STEP 7: Uh oh, merge conflicts!
 
 ```{r break-it-1}
-### Both partners - delete this comment, then write some code here
-### to plot, summarize, calculate something simple using the diamonds
-### dataset.
-
-
+pairs(premium) # pairwise plot
+new_premium = premium |>
+  mutate(total=paste0(color,":",clarity))
 ```
 
 ## STEP 11: And even more merge conflicts!
 
 ```{r break-it-2}
-### Both partners - delete this comment, then write some code here
-### to plot, summarize, calculate something simple using the diamonds
-### dataset.
-
-
-```
-
-=======
----
-title: "Wild Git Collaboration Practice"
-format: 
-  html:
-    code-fold: show
-execute: 
-  warning: false
-  message: false
----
-
-```{r}
-library(ggplot2)
-library(tidyverse)
-```
-
-
-## STEP 5: No merge conflicts!
-
-```{r partner 1}
-### In this code chunk, start with the diamonds dataset (built in to
-### ggplot2 package) and create a plot of price vs. carat (or some other
-### variables of your choice)
-
-diamonds_plot <- ggplot(diamonds, aes(x = price, y = depth))+
-  geom_line()+
-  facet_wrap(~clarity)
-
-diamonds_plot
-
-```
-
-```{r partner 2}
-### In this code chunk, start with the diamonds dataset (built in to
-### ggplot2 package) and create a subset based on filtering, e.g., 
-### size greater than 1 carat or cut is "Ideal"
-
+premium_carat = premium |>
+  filter(carat>0.5)
+ggplot(premium_carat, aes(x=carat, y=depth)) +
+  geom_point() +
+  theme_bw()
+  
 
 
 ```
@@ -114,5 +77,3 @@ table_plot <- ggplot(diamonds, aes(x = price, y = table), color = color)+
 
 table_plot
 ```
-
->>>>>>> d9164caa0ee52c3677eeb12bdfe0741d9d5f01cc
