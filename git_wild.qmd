@@ -72,8 +72,7 @@ depth_plot
 
 ```{r break-it-2}
 table_plot <- ggplot(diamonds, aes(x = price, y = table), color = color)+
-  geom_line()+
-  facet_wrap(~color)
+  geom_line()
 
 table_plot
 ```
