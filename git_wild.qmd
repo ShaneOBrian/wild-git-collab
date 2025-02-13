@@ -8,6 +8,11 @@ execute:
   message: false
 ---
 
+```{r}
+library(ggplot2)
+library(tidyverse)
+```
+
 
 ## STEP 5: No merge conflicts!
 
@@ -16,6 +21,11 @@ execute:
 ### ggplot2 package) and create a plot of price vs. carat (or some other
 ### variables of your choice)
 
+diamonds_plot <- ggplot(diamonds, aes(x = price, y = depth))+
+  geom_line()+
+  facet_wrap(~clarity)
+
+diamonds_plot
 
 ```
 
@@ -31,20 +41,19 @@ execute:
 ## STEP 7: Uh oh, merge conflicts!
 
 ```{r break-it-1}
-### Both partners - delete this comment, then write some code here
-### to plot, summarize, calculate something simple using the diamonds
-### dataset.
+depth_plot <- ggplot(diamonds, aes(x = price, y = depth), color = color)+
+  geom_line()
 
-
+depth_plot
 ```
 
 ## STEP 11: And even more merge conflicts!
 
 ```{r break-it-2}
-### Both partners - delete this comment, then write some code here
-### to plot, summarize, calculate something simple using the diamonds
-### dataset.
+table_plot <- ggplot(diamonds, aes(x = price, y = table), color = color)+
+  geom_line()+
+  facet_wrap(~color)
 
-
+table_plot
 ```
 
